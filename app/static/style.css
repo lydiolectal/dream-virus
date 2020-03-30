@@ -1,17 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Courier Prime', monospace;
     -webkit-animation: bgcolor 20s infinite;
     animation: bgcolor 10s infinite;
     -webkit-animation-direction: alternate;
     animation-direction: alternate;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
-a, h1, h2 {
-    color: #1500ff;
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: 900;
+}
+
+p {
+    font-size: 18px;
+    line-height: 130%;
 }
 
 a {
+    color: #1500ff;
     text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 ul {
@@ -22,6 +44,52 @@ ul {
 
 li {
     display: inline;
+    font-size: 20px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 40px;
+}
+
+.title {
+    padding-left: 120px;
+    padding-right: 60px;
+}
+
+.navbar {
+    padding-right: 120px;
+    padding-top: 30px;
+}
+
+.content {
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+@media(max-width: 900px) {
+    h1 {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .title {
+        padding-left: 80px;
+        padding-right: 30px;
+    }
+    
+    .navbar {
+        padding-right: 80px;
+        padding-top: 15px;
+        width: 150px;
+    }
+    
+    .content {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
 }
 
 @keyframes bgcolor {

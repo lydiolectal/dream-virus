@@ -1,14 +1,14 @@
 from app import app
-from flask import render_template
+from flask import render_template, request
 
 @app.route('/')
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-@app.route('/dreams')
-def dreams():
-    return render_template('dreams.html')
+@app.route('/archive')
+def archive():
+    return render_template('archive.html')
 
 @app.route('/submit')
 def submit():
