@@ -1,0 +1,47 @@
+body {
+    font-family: 'Courier Prime', monospace;
+    -webkit-animation: bgcolor 20s infinite;
+    animation: bgcolor 10s infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+
+a, h1, h2 {
+    color: #1500ff;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+
+@keyframes bgcolor {
+    0% {
+        background-color: #FFEAC9
+    }
+
+    25% {
+        background-color: #fce9ff 
+    }
+
+    50% {
+        background-color: #efe0ff
+    }
+
+    75% {
+        background-color: #C9CAFC
+    }
+
+    100% {
+        background-color: #BED7FB
+    }
+}
