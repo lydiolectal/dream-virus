@@ -13,3 +13,7 @@ def archive():
 @app.route('/submit')
 def submit():
     return render_template('submit.html')
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
