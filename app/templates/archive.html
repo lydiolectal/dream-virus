@@ -12,13 +12,11 @@
 <h2>
     displaying all dreams:
 </h2>
-<!-- <p class="indented">
-    <a>Dream #1</a> by D.D. on 3/25/20 in Philadelphia
-    <br>tags: children, trip, waterfall, death
-</p>
 
-<p class="indented">
-    <a>Dream #2</a> by N.B. on 3/25/20 in Philadelphia
-    <br>tags: alone, water, dinghy, sleep 
-</p> -->
+<!-- link to dream content page, include tags -->
+{% for dream in dreams %}
+<p>dream #{{ dream.id_ }} by {{ dream.initials }} in {{ dream.location }}</p>
+{% endfor %}
+
+</p>
 {% endblock %}

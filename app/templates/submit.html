@@ -2,6 +2,26 @@
 
 {% block content %}
 
-<p>submission form here</p>
+<!-- 
+TODO: nest content in 'if/else' blocks for various states:
+- 'enter email'
+- 'email sent'
+- submission form (w/ option to log out at top)
+-->
+
+<h2>enter email to sign in</h2>
+
+<p>We'll send you an email with a link to the submission page. :)</p>
+
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.email(size=32) }}
+        {% for error in form.email.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+    {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
 
 {% endblock %}

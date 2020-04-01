@@ -14,3 +14,7 @@ build/
 *.egg-info/
 .DS_Store
 .vscode/
+.env
+.flaskenv
+
+collective-dream-collection-firebase-adminsdk-k55og-50f747d314.json
