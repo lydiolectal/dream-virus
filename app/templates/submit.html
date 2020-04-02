@@ -14,9 +14,7 @@ TODO: nest content in 'if/else' blocks for various states:
 <p>We'll send you an email with a link to the submission page. :)</p>
 
 <form action="" method="post">
-    {{ form.hidden_tag() }}
     <p>
-        <!-- {{ form.email(size=32) }} -->
         <input id="email" type="text" required pattern = ".+@.+" name="email"> 
     </p>
     <p>

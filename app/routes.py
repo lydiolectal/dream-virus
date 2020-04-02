@@ -20,12 +20,12 @@ def archive():
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     # email not yet sent
-    form = EmailForm()
+    # form = EmailForm()
     # if form.validate_on_submit():
     #     # send email
     #     send_email(form.data['email'])
     #     return redirect('/about')
-    return render_template('submit.html', form=form)
+    return render_template('submit.html')
 
     # email sent -- check email / re-enter email
 
