@@ -16,10 +16,13 @@ function verifyEmail() {
 // send out authentication email (https://firebase.google.com/docs/auth/web/email-link-auth)
 function sendLoginEmail(email) {
   try {
+    const url = document.location.href;
+    console.log(url)
     var actionCodeSettings = {
       // URL you want to redirect back to. The domain (www.example.com) for this
       // URL must be whitelisted in the Firebase Console.
-      url: "https://nightpoems.com",
+      url: url,
+      // url: "https://collective-dream-collection.web.app/",
       // This must be true.
       handleCodeInApp: true,
     };
