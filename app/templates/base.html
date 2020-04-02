@@ -2,7 +2,9 @@
 <html>
 <head>
     <title>collective nightmare dream collection</title>
+    <!-- load css, js, favicon, and font -->
     <link rel=stylesheet type=text/css href="{{ url_for('static',filename='style.css') }}">
+    <script src= "{{ url_for('static', filename='script.js') }}"></script>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon_sleep.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=Courier+Prime&display=swap" rel="stylesheet">
 </head>
@@ -33,5 +35,23 @@
       {% block content %}{% endblock %}
     </div>
 
+<!-- load core and auth firebase sdk -->
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+
+<script>
+  // configure firebase for app
+  var firebaseConfig = {
+    apiKey: "AIzaSyDrxTl7_iEZ18wiOLJtsWsF6eRouI8QC-E",
+    authDomain: "collective-dream-collection.firebaseapp.com",
+    databaseURL: "https://collective-dream-collection.firebaseio.com",
+    projectId: "collective-dream-collection",
+    storageBucket: "collective-dream-collection.appspot.com",
+    messagingSenderId: "527266011120",
+    appId: "1:527266011120:web:e80ab926e844a5bcd7af35"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 </html>

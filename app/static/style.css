@@ -47,7 +47,7 @@ li {
     font-size: 20px;
 }
 
-input[type=text] {
+input[type=text], input[type=email] {
     padding: 5px 5px;
     font-family: sans-serif;
     font-size: 18px;
@@ -95,6 +95,10 @@ input[type=submit], input[type=reset] {
 .indented {
     padding-left: 50px;
     padding-right: 50px;
+}
+
+#email {
+    width: 300px;
 }
 
 @media(max-width: 900px) {

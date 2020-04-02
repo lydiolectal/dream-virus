@@ -13,15 +13,15 @@ TODO: nest content in 'if/else' blocks for various states:
 
 <p>We'll send you an email with a link to the submission page. :)</p>
 
-<form action="" method="post" novalidate>
+<form action="" method="post">
     {{ form.hidden_tag() }}
     <p>
-        {{ form.email(size=32) }}
-        {% for error in form.email.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-    {% endfor %}
+        <!-- {{ form.email(size=32) }} -->
+        <input id="email" type="text" required pattern = ".+@.+" name="email"> 
     </p>
-    <p>{{ form.submit() }}</p>
+    <p>
+        <input type="submit" value="Send link" onclick="verifyEmail()"> 
+    </p>
 </form>
 
 {% endblock %}
