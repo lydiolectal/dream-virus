@@ -21,10 +21,6 @@ def archive():
 def submit():
     return render_template('submit.html')
 
-@app.route('/email-redirect')
-def email_redirect():
-    return render_template('email-redirect.html')
-
 @app.route('/dream-form', methods=['GET', 'POST'])
 def dream_form():
     return render_template('dream-form.html')

@@ -20,7 +20,7 @@ function verifyEmail() {
 // send out authentication email
 function sendLoginEmail(email) {
   try {
-    const url = `${document.location.protocol}//${document.location.host}/email-redirect`;
+    const url = `${document.location.protocol}//${document.location.host}/dream-form`;
     // const url = document.location.href;
     console.log(url)
     var actionCodeSettings = {
@@ -38,32 +38,41 @@ function sendLoginEmail(email) {
   }
 }
 
-// TODO: figure out how to call this when user is taken to /email-redirect
+// authenticates login from email link 
 function redirectLoginEmail() {
+const header = document.getElementById("header-email-redirect");
+const message = document.getElementById("message-email-redirect");
+const dreamForm = document.getElementById("form-dream");
   // Confirm the link is a sign-in with email link.
 if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
   // Get the email if available. This should be available if the user completes
   // the flow on the same device where they started it.
   var email = window.localStorage.getItem('emailForSignIn');
-  if (!email) {
+  while (!email) {
     // User opened the link on a different device. To prevent session fixation
     // attacks, ask the user to provide the associated email again. For example:
-    email = window.prompt('Please provide your email for confirmation');
+    email = window.prompt('Hi! Please provide your email for confirmation');
   }
   // The client SDK will parse the code from the link for you.
   firebase.auth().signInWithEmailLink(email, window.location.href)
     .then(function(result) {
       // Clear email from storage.
       window.localStorage.removeItem('emailForSignIn');
+
+      header.innerHTML = "dream submission form";
+      message.innerHTML = `Not ${email}? Sign in <a href='/submit'>here</a>`;
+      dreamForm.innerHTML = "omg it's a bat, a tab, a...DREAM ?";
     })
     .catch(function(error) {
+      console.log("error!", error);
+      header.innerHTML = "oops! you are not authorized to view this page"
+      message.innerHTML = `Sign in with email <a href="/submit">here</a>. You might need to re-enter your email, as one request is only good for one sign-in attempt. :)`
       // Some error occurred, you can inspect the code: error.code
       // Common errors could be invalid email and invalid or expired OTPs.
     });
-    const header = document.getElementById("header-email-redirect")
-    const message = document.getElementById("message-email-redirect")
 
-    header.innerHTML = "dream submission form <a href='/dream-form'>here</a>"
-    message.innerHTML = `not ${email}? sign-in <a href='/submit'>here</a>`
+} else {
+header.innerHTML = "oops! you are not authorized to view this page"
+message.innerHTML = `Sign in with email <a href="/submit">here</a>. You might need to re-enter your email, as one request is only good for one sign-in attempt. :)`
 }
 }

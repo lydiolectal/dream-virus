@@ -52,6 +52,11 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+  // try to validate login with email
+  if (document.location.pathname == "/dream-form"){
+    redirectLoginEmail();
+  }
 </script>
 </body>
 </html>
