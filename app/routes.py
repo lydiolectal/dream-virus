@@ -1,4 +1,4 @@
-from flask import flash, redirect, render_template, request
+from flask import flash, redirect, render_template, request, url_for
 
 from app import app
 from app.forms import EmailForm
@@ -19,18 +19,15 @@ def archive():
 
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
-    # email not yet sent
-    # form = EmailForm()
-    # if form.validate_on_submit():
-    #     # send email
-    #     send_email(form.data['email'])
-    #     return redirect('/about')
     return render_template('submit.html')
 
-    # email sent -- check email / re-enter email
+@app.route('/email-redirect')
+def email_redirect():
+    return render_template('email-redirect.html')
 
-    # 'logged in'
-    
+@app.route('/dream-form', methods=['GET', 'POST'])
+def dream_form():
+    return render_template('dream-form.html')
 
 @app.errorhandler(404)
 def page_not_found(e):

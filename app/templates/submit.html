@@ -2,25 +2,21 @@
 
 {% block content %}
 
-<!-- 
-TODO: nest content in 'if/else' blocks for various states:
-- 'enter email'
-- 'email sent'
-- submission form (w/ option to log out at top)
--->
-
 <h2>enter email to sign in</h2>
 
 <p>We'll send you an email with a link to the submission page. :)</p>
 
 <form action="" method="post">
+    <div class="input-and-error">
+        <p>
+            <input id="email" type="text" required pattern = ".+@.+" name="email"> 
+        </p>
+        <p id="error-email" class="error"></p>
+    </div>
+    
     <p>
-        <input id="email" type="text" required pattern = ".+@.+" name="email"> 
+        <input type="button" value="Send link" onclick="verifyEmail()">  
     </p>
-    <p>
-        <input type="button" value="Send link" onclick="verifyEmail()"> 
-    </p>
-    <!-- add "email sent!" text after email successfully sent, empty email textbox. -->
 </form>
 
 {% endblock %}
