@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 id="header-email-redirect">verify email</h2>
+
+<p id="message-email-redirect">Please enter your email to confirm. :)</p>
+
+<span id="email-redirect-form">
+    <form action="">
+        <div class="input-and-error">
+            <p>
+                <input id="email" type="text" required pattern = ".+@.+" name="email"> 
+            </p>
+            <p id="error-email" class="error"></p>
+        </div>
+        
+        <p>
+            <input type="button" value="Verify" onclick="completeLogin()">  
+        </p>
+    </form>
+</span>
+
+{% endblock %}

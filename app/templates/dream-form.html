@@ -1,10 +1,24 @@
-{% extends "base.html" %}
 
-{% block content %}
-
-<h2 id="header-email-redirect"></h2>
-<p id="message-email-redirect"></a></p>
-
-<form id="form-dream"></form>
-
-{% endblock %}
+<form action="/_dream_form" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.initials.label }}<br>
+        {{ form.initials(size=32) }}
+    </p>
+    <p>
+        {{ form.location.label }}<br>
+        {{ form.location(size=32) }}
+    </p>
+    <p>
+        {{ form.dream_date.label }}<br>
+        {{ form.dream_date(size=32) }}
+    </p>
+    <p>
+        {{ form.dream_text.label }}<br>
+        {{ form.dream_text(size=32) }}
+    </p>
+    <p>{{ form.tags() }} {{ form.tags.label }}</p>
+    <p>{{ form.content_warnings() }} {{ form.content_warnings.label }}</p>
+    <p>{{ form.agree_to_copyright() }} {{ form.agree_to_copyright.label }}</p>
+    <p>{{ form.submit() }}</p>
+</form>

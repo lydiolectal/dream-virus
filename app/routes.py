@@ -1,7 +1,7 @@
-from flask import flash, redirect, render_template, request, url_for
+from flask import flash, jsonify, redirect, render_template, request, url_for
 
 from app import app
-from app.forms import EmailForm
+from app.forms import DreamForm 
 from app.models import Dream
 
 @app.route('/')
@@ -21,9 +21,18 @@ def archive():
 def submit():
     return render_template('submit.html')
 
-@app.route('/dream-form', methods=['GET', 'POST'])
-def dream_form():
-    return render_template('dream-form.html')
+@app.route('/email-redirect')
+def email_redirect():
+    return render_template('email-redirect.html')
+
+@app.route('/_dream_form', methods=['GET', 'POST'])
+def get_dream_form():
+    if request.method == 'POST':
+        # store dream in db
+        return redirect ('/archive')
+    dream_form = DreamForm()
+    html = render_template('dream-form.html', form=dream_form)
+    return jsonify({'html': html})
 
 @app.errorhandler(404)
 def page_not_found(e):
