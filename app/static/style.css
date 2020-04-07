@@ -42,12 +42,23 @@ ul {
     padding: 0;
 }
 
+ul#themes li, ul#content_warnings li {
+    display: block;
+    font-size: 18px;
+    margin: 0 0 3px 0;
+}
+
+label {
+    font-size: 18px;
+}
+
 li {
     display: inline;
     font-size: 20px;
 }
 
 input[type=text], input[type=email] {
+    border: 1px #eee;
     padding: 5px 5px;
     font-family: sans-serif;
     font-size: 18px;
@@ -68,6 +79,13 @@ input[type=submit],input[type=button], input[type=reset] {
 input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover {
 color: black;
 background-color: rgb(255, 255, 255, 0.6);
+}
+
+textarea {
+    padding: 5px 5px;
+    border: 1px #eee;
+    font-family: sans-serif;
+    font-size: 18px;
 }
 
 .header {
@@ -111,7 +129,7 @@ background-color: rgb(255, 255, 255, 0.6);
     color: red;
 }
 
-#email {
+#email-field {
     width: 300px;
 }
 

@@ -1,6 +1,6 @@
 // validate well-formedness of email input
 function verifyEmail() {
-    const email = document.getElementById("email");
+    const email = document.getElementById("email-field");
     const error = document.getElementById("error-email");
     if (email.validity.valueMissing) {
         console.log("empty!")
@@ -39,7 +39,7 @@ function sendLoginEmail(email) {
 
 // validate and authenticate email to complete login
 function completeLogin() {
-  const email = document.getElementById("email");
+  const email = document.getElementById("email-field");
   const error = document.getElementById("error-email");
   if (email.validity.valueMissing) {
       console.log("empty!")

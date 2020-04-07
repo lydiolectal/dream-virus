@@ -34,6 +34,11 @@ def get_dream_form():
     html = render_template('dream-form.html', form=dream_form)
     return jsonify({'html': html})
 
+@app.route('/_test_dream_form', methods=['GET', 'POST'])
+def _test_dream_form():
+    dream_form = DreamForm()
+    return render_template('_test_dream_form.html', form=dream_form)
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
