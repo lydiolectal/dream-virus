@@ -8,14 +8,14 @@
 <p>
     by date, location, theme
 </p>
-<hr>
+<hr noshade size=1px>
 <h2>
     displaying all dreams:
 </h2>
 
-<!-- link to dream content page, include tags -->
+<!-- link to dream content page, include themes -->
 {% for dream in dreams %}
-<p>dream #{{ dream.id_ }} by {{ dream.initials }} in {{ dream.location }}</p>
+<p>dream #{{ dream.id_ }} by {{ dream.name }} in {{ dream.location }}</p>
 {% endfor %}
 
 </p>

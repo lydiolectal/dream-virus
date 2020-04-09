@@ -1,24 +1,72 @@
+{% extends "base.html" %}
 
-<form action="/_dream_form" method="post" novalidate>
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.initials.label }}<br>
-        {{ form.initials(size=32) }}
-    </p>
-    <p>
-        {{ form.location.label }}<br>
-        {{ form.location(size=32) }}
-    </p>
-    <p>
-        {{ form.dream_date.label }}<br>
-        {{ form.dream_date(size=32) }}
-    </p>
-    <p>
-        {{ form.dream_text.label }}<br>
-        {{ form.dream_text(size=32) }}
-    </p>
-    <p>{{ form.tags() }} {{ form.tags.label }}</p>
-    <p>{{ form.content_warnings() }} {{ form.content_warnings.label }}</p>
-    <p>{{ form.agree_to_copyright() }} {{ form.agree_to_copyright.label }}</p>
-    <p>{{ form.submit() }}</p>
-</form>
+{% block content %}
+
+<h2 id="header-email-redirect">dream submission form</h2>
+
+<p id="message-email-redirect">Not [some email]? Sign in <a href='/submit'>here</a></p>
+
+<hr noshade size=1px>
+
+<span id="email-redirect-form">
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            <b>{{ form.name.label }}</b>
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br>
+            Real or non de plume. 
+            <br>
+            {{ form.name(style="width:25%") }}
+            <br>
+        </p>
+        <p>
+            <b>{{ form.location.label }}</b>
+            {% for error in form.location.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br>
+            Include the place where you had this dream. Feel free to interpret 'place' as you'd like.
+            <br>
+            {{ form.location(style="width:50%") }}
+        </p>
+        <p>
+            <b>{{ form.dream_date.label }}</b>
+            {% for error in form.dream_date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br>
+            Please enter the day on which you had this dream as MM/DD/YYYY. If you had the dream at night, enter the date of the evening before. 
+            <br>
+            {{ form.dream_date(style="width:50%") }}
+        </p>
+        <p>
+            <b>{{ form.dream_text.label }}</b>
+            {% for error in form.dream_text.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+            <br>
+            Describe what you remember from the dream. Try to avoid ornamentation, analysis, or explanation -- what do you see? Hear? Touch? Smell? Taste? Feel? Do?
+            <br>
+            {{ form.dream_text(style="width:100%", rows="20") }}
+        </p>
+
+            <b>{{ form.themes.label }}</b>
+            {{ form.themes() }}<br>
+
+            <b>{{ form.content_warnings.label }}</b>
+            {{ form.content_warnings() }}
+<hr noshade size=1px>
+        <p>I agree to have my dream published anonymously on Collective Nightmare Dream Collection.<br>
+        {{ form.agree_to_copyright() }} {{ form.agree_to_copyright.label }}
+        {% for error in form.agree_to_copyright.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+</span>
+
+{% endblock %}

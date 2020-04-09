@@ -58,37 +58,32 @@ function completeLogin() {
 
 // authenticates login from email link 
 function authenticateEmail(email) {
-const header = document.getElementById("header-email-redirect");
-const message = document.getElementById("message-email-redirect");
-const errorElement = document.getElementById("error-email");
 // Confirm the link is a sign-in with email link.
 if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
   firebase.auth().signInWithEmailLink(email, window.location.href)
     .then(function(result) {
       // Clear email from storage.
       window.localStorage.removeItem('emailForSignIn');
-      header.innerHTML = "dream submission form";
-      message.innerHTML = `Not ${email}? Sign in <a href='/submit'>here</a>`;
       // grab the rest of dream submission form from flask
-      $.get("/_dream_form")
+      $.get("/_signin")
         .done(function(response) {
-          errorElement.innerHTML = "";
-          form = document.getElementById("email-redirect-form");
-          form.innerHTML = response["html"];
+          window.location.replace("/dream-form");
         })
         .catch(function(error){
-          errorElement.innerHTML = "";
-          console.log("error getting dream form html from server");
+          console.log("error logging in with email", error);
+          window.location.replace("/access-denied");
         })
     })
     .catch(function(error) {
-      console.log("error!", error);
-      errorElement.innerHTML = `Not authorized; try signing in <a href="/submit">here</a>`;
+      console.log("error authenticating email with firebase", error);
+      // errorElement.innerHTML = `Not authorized; try signing in <a href="/submit">here</a>`;
+      window.location.replace("/access-denied");
       // Some error occurred, you can inspect the code: error.code
       // Common errors could be invalid email and invalid or expired OTPs.
     });
 
 } else {
-      error.innerHTML = `Not authorized; try signing in <a href="/submit">here</a>`;
+      console.log("email not authenticated through firebase", error);
+      window.location.replace("/access-denied");
 }
 }

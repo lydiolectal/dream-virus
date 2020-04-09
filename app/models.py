@@ -1,10 +1,10 @@
 
 class Dream:
 
-    def __init__(self, id_, email, initials, location, date, content):
+    def __init__(self, id_, email, name, location, date, content):
         self.id_ = id_
         self.email = email
-        self.initials = initials
+        self.name = name
         self.location = location
         self.date = date
         self.content = content
