@@ -11,7 +11,7 @@ class MultiCheckboxField(SelectMultipleField):
 class DreamForm(FlaskForm):
     title = StringField('Title', validators=[InputRequired(), Length(max=128)])
     # name must be alpha characters only
-    name = StringField('Name', validators=[DataRequired(), Regexp("[a-zA-Z]+"), Length(max=64)])
+    name = StringField('Name', validators=[InputRequired(), Regexp("[a-zA-Z]+"), Length(max=64)])
     # location must be country or city, validated against google places api
     location = StringField('Location', validators=[InputRequired(), Length(max=64)])
     # dream_date must follow Y-M-D format
