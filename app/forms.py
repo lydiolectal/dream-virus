@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import BooleanField, DateField, StringField, SubmitField
 from wtforms.fields import SelectMultipleField
-from wtforms.validators import DataRequired, InputRequired, Regexp
+from wtforms.validators import DataRequired, InputRequired, Regexp, Length
 from wtforms.widgets import TextArea, ListWidget, CheckboxInput
 
 class MultiCheckboxField(SelectMultipleField):
@@ -9,13 +9,14 @@ class MultiCheckboxField(SelectMultipleField):
     option_widget = CheckboxInput()
 
 class DreamForm(FlaskForm):
+    title = StringField('Title', validators=[InputRequired(), Length(max=128)])
     # name must be alpha characters only
-    name = StringField('Name', validators=[DataRequired(), Regexp("[a-zA-Z]+")])
+    name = StringField('Name', validators=[DataRequired(), Regexp("[a-zA-Z]+"), Length(max=64)])
     # location must be country or city, validated against google places api
-    location = StringField('Location', validators=[InputRequired()])
+    location = StringField('Location', validators=[InputRequired(), Length(max=64)])
     # dream_date must follow Y-M-D format
-    dream_date = DateField('Date of dream', validators=[InputRequired()], format='%m/%d/%Y') 
-    dream_text = StringField('Dream', widget=TextArea(), validators=[InputRequired()])
+    date = DateField('Date of dream', validators=[InputRequired()], format='%m/%d/%Y') 
+    content = StringField('Dream', widget=TextArea(), validators=[InputRequired()])
     # TODO: populate with query results from 'themes' db table instead
     themes = MultiCheckboxField(
         'Themes',

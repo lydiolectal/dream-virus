@@ -12,8 +12,23 @@ def about():
 @app.route('/archive')
 def archive():
     # get all dreams
-    dream_da = Dream(id_=1, email='dreamer@gmail.com', name='DD', location='Philadelphia',date='3/24',content='idk')
-    dream_n = Dream(id_=2, email='dreamer2@gmail.com', name='NN', location='New York City',date='3/25',content='idk')
+    dream_da = Dream(id=1, email='dreamer@gmail.com', 
+                    name='DD',
+                    location='Philadelphia',
+                    date='3/24',
+                    content='idk',
+                    # themes=['falling', 'asleep'],
+                    # content_warnings=['trauma'],
+                    )
+    dream_n = Dream(id=2,
+                    email='dreamer2@gmail.com',
+                    name='NN',
+                    location='New York City',
+                    date='3/25',
+                    content='idk',
+                    # themes=['running'],
+                    # content_warnings=['mental-health']
+                    )
     dreams = [dream_da, dream_n]
     return render_template('archive.html', dreams=dreams)
 
@@ -40,6 +55,7 @@ def dream_form():
     authorized = session.get('authorized')
     print('user is authorized:', authorized)
     if dream_form.validate_on_submit():
+        print (dream_form.dream_text)
         # store dream in db
         # 'sign out' user
         session.pop('authorized', None)
